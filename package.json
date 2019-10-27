@@ -1,0 +1,35 @@
+{
+  "name": "announcekit-vue",
+  "version": "1.0.6",
+  "description": "Use AnnounceKit widgets in your VueJS App",
+  "repository": "https://github.com/announcekitapp/announcekit-vue",
+  "homepage": "https://announcekit.app",
+  "keywords": [
+    "announcekit",
+    "newsfeed",
+    "changelog",
+    "vue"
+  ],
+  "author": "announcekit",
+  "license": "MIT",
+  "main": "dist/announcekit.umd.js",
+  "module": "dist/announcekit.esm.js",
+  "unpkg": "dist/announcekit.min.js",
+  "browser": {
+    "./sfc": "src/announcekit.vue"
+  },
+  "scripts": {
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build:umd": "rollup --config ./rollup.config.js --format umd --file dist/announcekit.umd.js",
+    "build:es": "rollup --config ./rollup.config.js --format es --file dist/announcekit.esm.js",
+    "build:unpkg": "rollup --config ./rollup.config.js --format iife --file dist/announcekit.min.js"
+  },
+  "devDependencies": {
+    "rollup": "^1.17.0",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-vue": "^5.0.1",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
