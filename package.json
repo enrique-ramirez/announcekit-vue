@@ -1,6 +1,6 @@
 {
   "name": "announcekit-vue",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Use AnnounceKit widgets in your VueJS App",
   "repository": "https://github.com/announcekitapp/announcekit-vue",
   "homepage": "https://announcekit.app",
@@ -31,5 +31,8 @@
     "rollup-plugin-vue": "^5.0.1",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "vue-runtime-helpers": "^1.1.2"
   }
 }
