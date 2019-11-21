@@ -92,7 +92,7 @@ export default {
             }
           });
         },
-        data: this.trackUserData
+        data: this.$props.userData
       });
 
       window["announcekit"].push(options);
