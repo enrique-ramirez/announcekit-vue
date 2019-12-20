@@ -42,6 +42,10 @@ export default {
 
       if (this.$props.floatWidget) this.selector = null;
 
+      this.widgetName = Math.random()
+        .toString(36)
+        .substring(10);
+
       const _this = this;
 
       var options = Object.assign({}, styleParams, {
@@ -50,6 +54,10 @@ export default {
         version: 2,
         selector: this.selector,
         onInit: function(_widget) {
+          if (_widget.conf.name !== _this.widgetName) {
+            return _widget.destroy();
+          }
+
           const ann = window["announcekit"];
 
           _this.widgetInstance = _widget;
@@ -102,13 +110,13 @@ export default {
   created: function() {
     this.widgetInstance = null;
 
-    this.widgetName =
+    const widgetName =
       this.$props.name ||
       Math.random()
         .toString(36)
         .substring(10);
 
-    this.selector = `.ak-${this.widgetName}`;
+    this.selector = `.ak-${widgetName}`;
   },
   updated: function() {
     this.$nextTick(function() {
