@@ -4,7 +4,7 @@ The easiest way to use AnnounceKit widgets in your VueJS App.
 
 **Visit [https://announcekit.app](https://announcekit.app) to get started with AnnounceKit.**
 
-[Live demo](https://codesandbox.io/s/vue-template-b8nc7)
+[Live demo](https://codesandbox.io/s/vue-template-xppok)
 
 [Documentation](https://announcekit.app/docs/vuejs)
 
