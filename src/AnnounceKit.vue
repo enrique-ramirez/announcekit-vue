@@ -18,6 +18,7 @@ export default {
     catchClick: String,
     widgetStyle: Object,
     floatWidget: Boolean,
+    embedWidget: Boolean,
     onWidgetOpen: Function,
     onWidgetClose: Function,
     onWidgetResize: Function,
@@ -53,6 +54,7 @@ export default {
         name: this.widgetName,
         version: 2,
         selector: this.selector,
+        embed: this.$props.embedWidget,
         onInit: function(_widget) {
           if (_widget.conf.name !== _this.widgetName) {
             return _widget.destroy();
