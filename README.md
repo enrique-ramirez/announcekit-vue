@@ -1,5 +1,6 @@
 ![](https://announcekit.app/images/logo@2x.png)
 
+
 The easiest way to use AnnounceKit widgets in your VueJS App.
 
 **Visit [https://announcekit.app](https://announcekit.app) to get started with AnnounceKit.**
