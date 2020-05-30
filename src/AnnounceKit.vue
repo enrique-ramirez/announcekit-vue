@@ -1,6 +1,7 @@
 <template>
   <a
-    v-bind="[userData ? userData : null]"
+    v-bind:user="[user ? user : null]"
+    v-bind:data="[data ? data : null]"
     v-bind:class="[selector ? selector.slice(1) : '']"
     href="#"
   ></a>
@@ -13,35 +14,43 @@ export default {
     name: String,
     widget: {
       type: String,
-      required: true
+      required: true,
     },
     catchClick: String,
     widgetStyle: Object,
+
     floatWidget: Boolean,
     embedWidget: Boolean,
+
     onWidgetOpen: Function,
     onWidgetClose: Function,
     onWidgetResize: Function,
     onWidgetUnread: Function,
-    userData: Object
+
+    user: Object,
+    data: Object,
   },
   methods: {
     loaded: function() {
-      let style = this.$props.widgetStyle;
+      const style = this.$props.widgetStyle;
 
-      let styleParams = {
+      const styleParams = {
         badge: {
-          style: style
+          style: style,
         },
         line: {
-          style: style
+          style: style,
         },
         float: {
-          style: style
-        }
+          style: style,
+        },
       };
 
-      if (this.$props.floatWidget) this.selector = null;
+      if (this.$props.floatWidget) {
+        delete styleParams.badge;
+        delete styleParams.line;
+        this.selector = null;
+      }
 
       this.widgetName = Math.random()
         .toString(36)
@@ -49,10 +58,12 @@ export default {
 
       const _this = this;
 
-      var options = Object.assign({}, styleParams, {
+      const options = Object.assign({}, styleParams, {
         widget: this.$props.widget,
         name: this.widgetName,
         version: 2,
+        framework: "vue",
+        framework_version: "2.0.0",
         selector: this.selector,
         embed: this.$props.embedWidget,
         onInit: function(_widget) {
@@ -88,7 +99,7 @@ export default {
             if (ref.widget === _widget && _this.$props.onWidgetResize) {
               _this.$props.onWidgetResize({
                 widget: ref.widget,
-                size: ref.size
+                size: ref.size,
               });
             }
           });
@@ -97,16 +108,17 @@ export default {
             if (ref.widget === _widget && _this.$props.onWidgetUnread) {
               _this.$props.onWidgetUnread({
                 widget: ref.widget,
-                unread: ref.unread
+                unread: ref.unread,
               });
             }
           });
         },
-        data: this.$props.userData
+        data: this.$props.data,
+        user: this.$props.user,
       });
 
       window["announcekit"].push(options);
-    }
+    },
   },
 
   created: function() {
@@ -138,12 +150,12 @@ export default {
           },
           on: function(n, x) {
             window["announcekit"].queue.push([n, x]);
-          }
+          },
         };
 
         var scripttag = document.createElement("script");
         scripttag["async"] = true;
-        scripttag["src"] = `https://cdn.announcekit.app/widget.js`;
+        scripttag["src"] = `https://cdn.announcekit.app/widget-v2.js`;
 
         var scr = document.getElementsByTagName("script")[0];
         scr.parentNode.insertBefore(scripttag, scr);
@@ -151,6 +163,6 @@ export default {
 
       this.loaded();
     });
-  }
+  },
 };
 </script>
