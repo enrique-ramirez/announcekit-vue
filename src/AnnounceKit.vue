@@ -2,6 +2,7 @@
   <a
     v-bind:user="[user ? user : null]"
     v-bind:data="[data ? data : null]"
+    v-bind:lang="[lang ? lang : null]"
     v-bind:class="[selector ? selector.slice(1) : '']"
     href="#"
   ></a>
@@ -29,6 +30,7 @@ export default {
 
     user: Object,
     data: Object,
+    lang: String,
   },
   methods: {
     loaded: function() {
@@ -115,6 +117,7 @@ export default {
         },
         data: this.$props.data,
         user: this.$props.user,
+        lang: this.$props.lang,
       });
 
       window["announcekit"].push(options);
