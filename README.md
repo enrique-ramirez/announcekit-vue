@@ -60,6 +60,7 @@ Common props you may want to specify include:
 - `embedWidget` - Set true if the widget is a Embed widget.
 - `user` - User properties (for user tracking)
 - `data` - Segmentation data
+- `lang` - Language selector
 - `onWidgetOpen` - Called when the widget is opened.
 - `onWidgetClose` - Called when the widget is closed.
 - `onWidgetResize` - Called when the widget is resized.
