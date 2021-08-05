@@ -106,14 +106,10 @@ export default {
             }
           });
 
-          ann.on("widget-unread", function(ref) {
-            if (ref.widget === _widget && _this.$props.onWidgetUnread) {
-              _this.$props.onWidgetUnread({
-                widget: ref.widget,
-                unread: ref.unread,
-              });
-            }
-          });
+          if (_this.$props.onWidgetUnread) {
+            _this.$props.onWidgetUnread({widget:_widget, unread:_widget.state.ui.unreadCount});
+          }
+          
         },
         data: this.$props.data,
         user: this.$props.user,
