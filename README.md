@@ -26,13 +26,10 @@ yarn add announcekit-vue
           <a href="/product">Product</a>
         </li>
         <li>
-          <a href="#" class="ak-trigger">News
             <AnnounceKit
-                catchClick=".ak-trigger"
                 widget="https://announcekit.app/widgets/v2/31nbbO"
                 :user="optional_UserData"
                 :data='optional_SegmentationData' />
-          </a>
         </li>
       </ul>
     </nav>
@@ -55,9 +52,9 @@ Common props you may want to specify include:
 
 - **`widget`** - The url of the widget. You can obtain it while creating or editing widget in AnnounceKit Dashboard.
 - `style` - You can apply CSS rules to modify / tune the position of the widget.
-- `catchClick` - Element selector to catch clicks and open the widget.
 - `floatWidget` - Set true if the widget is a Float widget.
 - `embedWidget` - Set true if the widget is a Embed widget.
+- `boosters` - In case you don't want to boosters appear on the page the widget is placed.
 - `user` - User properties (for user tracking)
 - `data` - Segmentation data
 - `lang` - Language selector
@@ -65,3 +62,24 @@ Common props you may want to specify include:
 - `onWidgetClose` - Called when the widget is closed.
 - `onWidgetResize` - Called when the widget is resized.
 - `onWidgetUnread` - Called when unread post count of widget has been updated.
+
+## API
+
+You can use `ref` property to access the widget instance and call control functions
+
+- `open()`
+- `close()`
+- `unread()`
+- `instance()`
+
+```js
+<template>
+  <a @click="() => this.$refs.ankRef.open()">What's New</a>
+    <AnnounceKit ref="ankRef" widget="https://announcekit.co/widgets/v2/2nI0Ok" />
+</template>
+
+<script>
+import AnnounceKit from "announcekit-vue";
+...
+</script>
+```
