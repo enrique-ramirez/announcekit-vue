@@ -208,7 +208,7 @@ export default {
         var scripttag = document.createElement("script");
         scripttag["async"] = true;
         scripttag["src"] = `https://cdn.announcekit.app/widget-v2.js`;
-        scripttag.setAttribute("aria-label", "iframe");
+        scripttag.setAttribute("title", "Announcekit widget");
 
         var scr = document.getElementsByTagName("script")[0];
         scr.parentNode.insertBefore(scripttag, scr);
